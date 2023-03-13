@@ -1,13 +1,9 @@
-package com.example.notes.data.datasource.database.tasks
+package com.example.notes.data.datasource.database.notes
 
 import androidx.room.*
 
 @Dao
 interface NotesDao {
-
-    @Query("SELECT ${NotesEntity.NOTE_TITLE_COLUMN} " +
-            "FROM ${NotesEntity.NOTE_TABLE_NAME}")
-    fun getAllShortNotes(): List<String>
 
     @Query("SELECT * " +
             "FROM ${NotesEntity.NOTE_TABLE_NAME}")

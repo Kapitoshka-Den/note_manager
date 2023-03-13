@@ -10,14 +10,15 @@ import com.example.notes.screens.mainscreen.MainScreen
 sealed class GlobalNavControl(val route:String) {
     object MainScreen: NavControl("mainScreen")
     object LoadScreen:NavControl("loadScreen")
+
 }
 
 @Composable
-fun GlobalNavController(){
+fun GlobalNavController(value: () -> Unit) {
     val navControl = rememberNavController()
 
     NavHost(navController = navControl, startDestination = GlobalNavControl.LoadScreen.route){
         composable(GlobalNavControl.LoadScreen.route){ LoadScreen(navHostController = navControl)}
-        composable(GlobalNavControl.MainScreen.route){ MainScreen(navHostController = navControl)}
+        composable(GlobalNavControl.MainScreen.route){ MainScreen(navHostController = navControl,value)}
     }
 }
